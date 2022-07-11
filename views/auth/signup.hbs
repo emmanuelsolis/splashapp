@@ -1,14 +1,91 @@
+
+{{!-- 
+ Celia12
+ test2@gmail.com
+ Perritos2324
+
+ Carolina2
+ xchellong18@gmail.com
+ Carolina2123
+
+
+ --}}
+
+
+{{!-- action es la ruta a la que se va --}}
+<body class="signup">
+  
+
+<div class="signupContainer">
+
+  
+  {{!-- http://localhost:3000/auth/signup --}}
 <form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
 
-   <button type="submit">Submit</button>
-</form>
 
-{{#if errorMessage}}
-   {{errorMessage}}
+
+<div class="login-page">
+  <div class="form" >
+    <form class="register-form">
+      <label for="">Foto</label>
+      <input type="text" name="user_photo" value="{{user.user_photo}}">
+      <label for="">Nombre</label>
+      <input type="text" name="username" value="{{user.username}}"/>
+      <label for="">Email</label>
+      <input type="text" name="email" value="{{user.email}}"/>
+      <label for="">Contraseña</label>
+      <input type="password" name="password" value="{{user.password}}" />
+      <button>Envíar</button>
+      <p class="message">Ya estás registrado? <a href="/auth/login">Ingresar</a></p>
+    </form>
+    {{#if errorMessage}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+ {{errorMessage}} 
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {{/if}}
+    
+  </div>
+</div>
+
+
+
+
+</body>
+
+
+{{!-- {{#if errorMessage}}
+
+    {{#each errorMessage}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{this}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    
+    {{/each}}
+
+{{/if}} --}}
+
+
+{{!-- <label for="username">Nombre:</label>
+<input type="text" name="username">
+
+<label for="phone_number">Teléfono:</label>
+<input type="number" name="phone_number">
+
+<label for="email">Email:</label>
+<input type="text" name="email">
+
+
+
+<label for="password">Contraseña:</label>
+<input type="password" name="password">
+
+<button >Enviar</button> --}}
+
+{{!-- </form>
+
+</div> --}}
+
+
+    
