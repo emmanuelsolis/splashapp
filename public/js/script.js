@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("splashapp JS imported successfully!");
+    console.log("splashproject JS imported successfully!");
   },
   false
 );
