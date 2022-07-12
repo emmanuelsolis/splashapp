@@ -43,8 +43,9 @@ exports.signup = (req,res,next) => {
 
     User.create({user_photo, username, description, phone_number, email, password: newPassword})
         .then(user => {
-        
-            res.redirect("/auth/login")
+            req.session.currentUser = user
+            res.redirect(`user/profile/${user.id}`)
+            //! res.redirect("/auth/login") pruebas para sessions
             console.log("user created", user)
         })
         .catch(err => next(err))
@@ -119,20 +120,19 @@ exports.login = (req,res,next) => {
 
 exports.viewProfile = (req,res) => {
 
-    const {id} = req.params
-    User.findById(id)
-    .then(user => {
-        res.render("user/profile",{ user: req.session.currentUser })
-    }).catch(error => {
-        console.log("error in post Dashboard", error)
-    }    )
+    // const {id} = req.params
+    // User.findById(id)
+    // .then(user => {
+        res.render("user/profile",{ userConnected: req.session.currentUser })
+    // }).catch(error => {
+    //     console.log("error in post Dashboard", error)
+    // }    )
 }
 
 
 exports.logout = (req,res,next) => {
     //! NO BORRA SESION DE MONGO
     req.session.destroy((error)=>{
-        console.log(req.session)
         if(error){
             console.log(error)
             return
@@ -140,6 +140,7 @@ exports.logout = (req,res,next) => {
 
         res.redirect("/")
         
+        console.log("CERRANDO LA SESION")
 
     })
 }

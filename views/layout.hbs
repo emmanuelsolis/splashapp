@@ -16,8 +16,46 @@
   
 
  {{!-- todo NAVBAR --}}
+
+ {{#if userConnected}}
+ <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
+
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="logoImage">
+        <a href="/"><img src="/images/logo.png" alt="" class="logo" /></a>
+      </div>
+      
+      <div class="menu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li> --}}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Quienes somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/partner/signup">Provedores</a>
+        </li>
+      </div>
+      
+      </ul>
+      <div class="buttons">
+       {{!-- <a href="/auth/signup"><button type="button" class="btn">Registrarme</button></a> --}}
+       <a href="/auth/login"><button type="button" class="btn">Mi Cuenta</button></a>
+       <form action="" method="post"><a href="/auth/logout"><button type="button" class="btn">Salir</button></a></form>
+      </div>
+    </div>
+  </div>
+</nav>
   
 
+  {{else}}
   <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
 
   <div class="container-fluid">
@@ -53,7 +91,7 @@
     </div>
   </div>
 </nav>
-
+{{/if}}
 
   {{!-- todo NAVBAR END --}}
 

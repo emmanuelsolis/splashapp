@@ -7,8 +7,8 @@ const usersController   = require("./../controllers/usersController")
 
 
 // Importamos las sesiones
-const isLoggedOut = require("./../middlewares/isLoggedOut");
-const isLoggedIn = require("./../middlewares/isLoggedin");       
+const isLoggedOut = require("./../middleware/isLoggedOut");
+const isLoggedIn = require("./../middleware/isLoggedIn");       
 
 
 // TODO --------------------PROFILE--------------------
@@ -19,11 +19,11 @@ router.get("/profile/:id", isLoggedIn ,usersController.viewProfile)
 
 
 // TODO --------------------EDIT--------------------
-router.get = ("/edit/:id", usersController.viewEditProfile)
-router.post = ("/edit/:id", usersController.postEditProfile)
+// router.get = ("/edit-user/:id", usersController.viewEditProfile)
+// router.post = ("/edit-user/:id", usersController.postEditProfile)
 
 
-
+    
 
 
 
