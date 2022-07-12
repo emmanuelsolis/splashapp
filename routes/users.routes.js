@@ -9,29 +9,40 @@ router.get("/profile/:id", (req, res, next) => {
     const {id} = req.params
     User.findById(id)
     .then(user => {
-        res.render("user/profile",)
+        res.render("user/profile",user)
     }).catch(error => {
         console.log("error EN EDITAR PERFIL", error)
     })
 })
 
+
+
+
+
+
+
+
 //TODO----------------------VIEWEDITPROFILE---------------------
-router.get("/edit-user/:id", (req, res, next) => {
+router.get("/edit/:id", (req, res, next) => {
     const {id} = req.params
-    const {username } = req.body
     User.findById(id)
-    .then(userEdited => {
-        res.render("user/edit-user.hbs",{userEdited})
+    .then(user => {
+        res.render("user/edit-user",user)
     }).catch(error => {
         console.log("error EN EDITAR PERFIL", error)
-    }   )
+    })
+  
 })
 
 router.post("/edit/:id", (req, res, next) => {
     const {id} = req.params
-    const {role, ...userEdited} = req.body
-    User.findByIdAndUpdate(id, userEdited, {Edit: true})
-    .then(userEdited => res.redirect(`/user/profile/${id}`))
+    const {username,...restUser} = req.body
+    console.log("EL ID DE EDIT USER",id)
+    User.findByIdAndUpdate(id,{username,...restUser}, {new: true})
+    .then(userUpdate => {
+        req.session.currentUser=userUpdate
+        res.redirect(`/auth/user/profile/${id}`)
+    })
     .catch(err => {
         console.log("Error in updating user",err)
         next(err)
@@ -39,7 +50,7 @@ router.post("/edit/:id", (req, res, next) => {
 })
 
 
-//TODO----------------------VIEWEDITPROFILE---------------------
+// //TODO----------------------VIEWEDITPROFILE---------------------
 
 //TODO----------------------VIEWDASHBOARD---------------------
 

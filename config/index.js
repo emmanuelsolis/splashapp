@@ -30,6 +30,7 @@ const MONGO_URI = require("../utils/consts");
 
 // Middleware configuration
 module.exports = (app) => {
+
   // In development environment the app logs
   app.use(logger("dev"));
 
@@ -56,6 +57,10 @@ module.exports = (app) => {
       secret: process.env.SESSION_SECRET || "super hyper secret key",
       resave: false,
       saveUninitialized: false,
+      cookie: { //Archivo con datos del usuario
+			httpOnly: true, // Fevita ataques XSS
+      sameSite:process.env.NODE_ENV === "production" ? "none" : "lax"
+		},
       store: MongoStore.create({
         mongoUrl: MONGO_URI,
       }),

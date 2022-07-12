@@ -9,8 +9,8 @@ const authController = require("./../controllers/authController")
 
 
 // Importamos las sesiones
-const isLoggedOut = require("./../middlewares/isLoggedOut");
-const isLoggedIn = require("./../middlewares/isLoggedin");
+const isLoggedOut = require("./../middleware/isLoggedOut");
+const isLoggedIn = require("./../middleware/isLoggedIn");
 
 
 //todo ----------------- CREACION DE USUARIO -----------------
@@ -44,7 +44,7 @@ router.get("/user/profile/:id",isLoggedIn,authController.viewProfile)
 
 
 //todo ----------------- CERRAR SESION -----------------
-router.post("/logout",isLoggedOut,authController.logout)
+router.get("/logout",isLoggedOut,authController.logout)
 
 
 module.exports = router
