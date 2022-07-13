@@ -1,12 +1,17 @@
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User.model")
 const Partner = require("./../models/Partner.model");
-
-//----------Rednderiza partner signup
+const Product = require("./../models/Product.model");
+const bodyParser = require('body-parser')
+// const fileUploader = require('../config/cloudinary.config');
+// const {checkRole} = require("../middleware/customMiddleware")
+// const mongoose = require('mongoose');
+// const nodemailer = require("nodemailer")
+//TODO----------Rednderiza partner signup
 exports.viewSignup = (req,res,next) => {
     res.render("partner/signup")
 }
-//-------Manejo de formulario de signup
+//TODO-------Post de formulario de signup te manda al profile
 exports.signup = (req,res,next) => {
     const {role, ...restPartner } = req.body;
     const salt = bcryptjs.genSaltSync(10);
@@ -14,17 +19,17 @@ exports.signup = (req,res,next) => {
 
     Partner.create({...restPartner, password: newPassword})
         .then(partner => {
-        
+            req.session.currentPartner = partner
             res.redirect(`/partner/profile/${partner._id}`)
             console.log("partner created", partner);
         })
         .catch(err => next(err))
 }
-//----------Rednderiza partner login
+//TODO----------Rednderiza partner login
 exports.viewLogin =(req,res,next) => {
     res.render("partner/login")
 }
-//-------Manejo de formulario de login
+//TODO-------Manejo de formulario de login ----->> te manda al profile
 exports.login = (req,res,next) => {
     const {email,password} = req.body
 	console.log("EL RQUESTTTTT",req.body)
@@ -56,7 +61,7 @@ exports.login = (req,res,next) => {
         //si todo lo anterior es correcto se manda a perfil
 
 		console.log(partner)
-		
+		req.session.currentPartner = partner
         res.redirect(`/partner/profile/${partner._id}`)
 
 		
@@ -67,39 +72,35 @@ exports.login = (req,res,next) => {
     })
 
 }
-//----------Rednderiza partner profile
+//TODO----------Rednderiza partner profile
 exports.viewProfile = (req,res,next) => {
     const {id} = req.params;
+    const {role, ...restPartner } = req.body;
     Partner.findById(id)
     .then(partner => {
-        res.render("partner/profile", partner)
+        res.render("partner/profile", {partner: req.session.currentPartner})
+        // res.render("partner/profile", user)
     }).catch(error=>{
         next(error)
     })
 }
-//----------Rednderiza partner List
-exports.viewPartnersList = (req,res,next) => {
-    res.render("partner/partners-list");
-}
-//!Busqueda de cada partner para renderizar en la lista
-// Partner.find()
-// .then(partners => {
-//     res.render("partner/partners-list", {partners})
-// }).catch(error=>{
-//     next(error)
-//
+
+//TODO -------Busqueda de cada partner para renderizar en la lista
 exports.viewDashboard = (req,res,next) => {
     const { id } = req.params;
     const { role, ...Product } = req.body
-    Product.findById(id)
-        .then(product => {
-            res.render("partner/dashboard", product)
+    Partner.find()
+    .then(partners => {
+        // .populate("_product _user_order")
+        let hbPartList = {}
+            res.render("partner/dashboard", {hbPartList:partners})
+        console.log("Lista de Partners", hbPartList)
         })
         .catch(err => {
             console.log("error in post/dashboard", err);
             next()
-        })
-}   
+    })
+}
 
 exports.postDashboard = (req,res,next) => {
     const {id} = req.params;
@@ -115,18 +116,22 @@ Partner.findById(id)
     })
 }
 
-// TODO --------------------LOGOUT--------------------
-
-//----------fin del Log Out
-
-
-
 // TODO --------------------EDIT--------------------
 
 exports.viewEditProfile = (req,res,next) => {
-    res.render("partner/edit-profile")
+    const {role, ...restPartner} = req.body
+    let {id} = req.params
+    Partner.findById(partner._id)
+    .then(partner => {
+        // {partner: restPartner}
+    res.render("partner/edit-partner", {partner})
+    console.log("Estoy en editar perfil", partner)
+    })
+    .catch(err => {
+        console.log("error en mostrar el edit-profile", err);
+        next()
+    }   )   
 }
-
 exports.postEditProfile = (req,res,next) => {
     const {id} = req.params
     const {role, ...partnerEdited} = req.body
@@ -135,5 +140,25 @@ exports.postEditProfile = (req,res,next) => {
     .catch(err => {
         console.log("Error in updating partner",err)
         next(err)
+    })
+}
+// TODO --------------------LOGOUT--------------------
+
+exports.logout = (req,res,next) => {
+
+    req.session.destroy((error)=>{
+        if(error){
+            console.log("req.session.currentPartner",req.session);
+            console.log(error)
+            return res
+                .status(500)
+                .send("Error in logout")
+
+        }
+
+        res.redirect("/")
+        
+        console.log("CERRANDO LA SESION")
+
     })
 }

@@ -42,6 +42,7 @@ const partnerSchema = new Schema({
   },
   _product: [{type:Schema.Types.ObjectId, ref:'Product'}], // productos ofrecidos]
   _user_order: [{type:Schema.Types.ObjectId, ref:'Partner'}],// productos adquiridos por el usuario
+  
 });
 
 const Partner = model("Partner", partnerSchema);

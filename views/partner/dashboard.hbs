@@ -1,8 +1,49 @@
-<h1>Dashboard</h1>
-{{>navPartners }}
+{{!-- {{>navPartners }} --}}
 
-{{>message}}
-{{>orders }}
+
+<div id="body">
+    <div id="navbar">
+
+    </div>
+<h1>List of Partners</h1>
+    <div id="cards" class="col-12">
+        {{#each hbPartList}}
+            <div class="card text-center m-5 col-12" style="width: 25%;">
+
+            <img class="card-img-top" src="{{partner_photo}}" alt="Kitty" />
+            <div class="card-body">
+              <h5 class="card-title">{{name}}</h5>
+              <ul>
+                <li> Email:{{email}}</li>
+                <li> Teléfono: {{phone_number}} </li>
+                <li> Dirección: {{address}} </li>
+                <li> Servicio: {{services}}</li>
+                <li>Horario de Servicio: {{open_hours}}</li>
+
+                {{!-- {{#if }}
+                  <li> </li>
+
+                {{/if}} --}}
+
+              </ul>
+              <a href="/partner/profile/{{_id}}" class="btn btn-danger">Conoce mis Servicios</a>
+            </div>
+
+          </div>
+        {{/each}}
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+{{!-- {{>orders }} --}}
+
 
 <h1>List of products</h1>
     {{#each product}}
