@@ -42,9 +42,9 @@ router.post("/dashboard", partnersAuthController.postDashboard)
 
 
 // TODO --------------------EDIT--------------------
-router.get = ("/edit/:id", partnersAuthController.viewEditProfile)
+router.get("/editPartner/:id", partnersAuthController.viewEditProfile)
 
-router.post = ("/edit/:id", partnersAuthController.postEditProfile)
+router.post("/editPartner/:id", partnersAuthController.postEditProfile)
 
 
 // TODO --------------------DELETE--------------------
