@@ -16,12 +16,6 @@ router.get("/profile/:id", (req, res, next) => {
 })
 
 
-
-
-
-
-
-
 //TODO----------------------VIEWEDITPROFILE---------------------
 router.get("/edit/:id", (req, res, next) => {
     const {id} = req.params
