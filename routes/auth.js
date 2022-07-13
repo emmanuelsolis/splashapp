@@ -18,14 +18,9 @@ const isLoggedIn = require("./../middleware/isLoggedIn");
 //mostramos formulario
 // http://localhost:3000/auth/signup
 router.get("/signup",isLoggedOut,authController.viewSignup)
-
-
-
 // manejo de formulario
 // recibe de: http://localhost:3000/auth/signup -------> GET/POST LIGIN
 router.post("/signup",isLoggedOut,authController.signup)
-
-
 
 
 //todo ----------------- INICIAR SESION -----------------
