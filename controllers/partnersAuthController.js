@@ -119,13 +119,12 @@ Partner.findById(id)
 // TODO --------------------EDIT--------------------
 
 exports.viewEditProfile = (req,res,next) => {
-    const {role, ...restPartner} = req.body
-    let {id} = req.params
-    Partner.findById(partner._id)
+    const {id} = req.params
+    Partner.findById(id)
     .then(partner => {
-        // {partner: restPartner}
-    res.render("partner/edit-partner", {partner})
-    console.log("Estoy en editar perfil", partner)
+    //     // {partner: restPartner}
+    console.log("Estoy en editar perfil")
+        res.render("partner/editPartner", partner)
     })
     .catch(err => {
         console.log("error en mostrar el edit-profile", err);
@@ -134,9 +133,12 @@ exports.viewEditProfile = (req,res,next) => {
 }
 exports.postEditProfile = (req,res,next) => {
     const {id} = req.params
-    const {role, ...partnerEdited} = req.body
-    Partner.findByIdAndUpdate(id, partnerEdited, {Edit: true})
-    .then(partnerEdited => res.redirect(`/partner/profile/${id}`))
+    const {name, ...restPartner} = req.body
+    Partner.findByIdAndUpdate(id, {name, ...restPartner}, {new: true})
+    .then(partnerEdited => {
+        req.session.currentPartner = partnerEdited
+        res.redirect(`/partner/profile/${id}`)
+    })
     .catch(err => {
         console.log("Error in updating partner",err)
         next(err)
