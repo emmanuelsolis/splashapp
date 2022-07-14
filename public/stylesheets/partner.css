@@ -1,0 +1,18 @@
+.containerProfile {
+  border: 2px solid red;
+  width: 100%;
+}
+
+.partnerCard {
+  border: 2px solid green;
+    
+}
+.partimg {
+  border: 2px solid blue;
+  width: 18rem;
+}
+.listContainer {
+    border: 2px solid yellow;
+    width: 50%;
+    height: 100%;
+}
