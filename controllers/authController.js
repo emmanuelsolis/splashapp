@@ -1,6 +1,7 @@
 //todo -------------- IMPORTACIONES --------------
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User.model")
+const fileUploader = require("./../config/cloudinary.config")
 
 // renderiza form de sign up
 exports.viewSignup = (req,res,next) => {
@@ -9,12 +10,16 @@ exports.viewSignup = (req,res,next) => {
 
 exports.signup = (req,res,next) => {
 
+    
+
+
     //1.- Obtenemos los datos del formulario
 
-    const {role, user_photo, username, email, description, password, phone_number} = req.body
+    const {role,profile_pic, username, email, description, password, phone_number} = req.body
 
-    console.log("DATOS DEL USUARIO",{ user_photo, username, email, description, password, phone_number})
+    console.log("DATOS DEL USUARIO",{profile_pic,username, email, description, password, phone_number})
 
+    
 
     // //==============> VALIDACIONES
     // //  A) Campos vacios
@@ -41,12 +46,17 @@ exports.signup = (req,res,next) => {
     const salt = bcryptjs.genSaltSync(10);
     const newPassword = bcryptjs.hashSync(password, salt);
 
-    User.create({user_photo, username, description, phone_number, email, password: newPassword})
+    User.create({profile_pic, username, description, phone_number, email, password: newPassword})
         .then(user => {
             req.session.currentUser = user
+
+            console.log("EL USUARIO CREADOOO",user)
             res.redirect(`user/profile/${user.id}`)
-            //! res.redirect("/auth/login") pruebas para sessions
-            console.log("user created", user)
+           
+          
+            // res.redirect(`user/profile/${user.id}`)
+            // //! res.redirect("/auth/login") pruebas para sessions
+            // console.log("user created", user)
         })
         .catch(err => next(err))
     .catch(error => {
@@ -64,7 +74,7 @@ exports.viewLogin =(req,res,next) => {
 
 exports.login = (req,res,next) => {
     //1.- Obtenemos los datos del formulario
-    const {username,email,password} = req.body
+    const {email,password} = req.body
 
     console.log("EN EL LOGIN",req.body)
     console.log('SESSION =====> ', req.session);
@@ -93,8 +103,6 @@ exports.login = (req,res,next) => {
 	// 	return
 	// }
 
-
-    const {id} = req.params
     User.findOne({email})
     .then(user => {
 

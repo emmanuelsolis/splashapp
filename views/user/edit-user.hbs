@@ -1,16 +1,18 @@
 <h1>Editar usuario</h1>
 
-<form class="register-form" action="/us/edit/{{_id}}" method="post">
+    <form class="register-form" action="/us/edit/{{_id}}" method="post" enctype="multipart/form-data">
       {{!-- <label for="">Foto</label>
       <input type="text" name="user_photo" value="{{user.user_photo}}"> --}}
+      <label for="">FOTO</label>
+      <input type="file" name="profile_pic" value="{{profile_pic}}"/>
       <label for="">Nombre</label>
       <input type="text" name="username" value="{{username}}"/>
-      {{!-- <label for="">Email</label>
+      <label for="">Email</label>
       <input type="text" name="email" value="{{user.email}}"/>
       <label for="">Telefono</label>
       <input type="number" name="phone_number" value="{{user.phone_number}}"/>
       <label for="">Dirección</label>
-      <input type="text" name="address" value="{{user.address}}"/> --}}
+      <input type="text" name="address" value="{{user.address}}"/>
       <button>Envíar</button>
     </form>
     
