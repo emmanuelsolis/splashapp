@@ -1,7 +1,7 @@
 //todo -------------- IMPORTACIONES --------------
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User.model")
-
+const bodyParser = require("body-parser")
 // renderiza form de sign up
 exports.viewSignup = (req,res,next) => {
     res.render("auth/signup")
@@ -44,7 +44,7 @@ exports.signup = (req,res,next) => {
     User.create({user_photo, username, description, phone_number, email, password: newPassword})
         .then(user => {
             req.session.currentUser = user
-            res.redirect(`user/profile/${user.id}`)
+            res.redirect(`/profile/${user.id}`)
             //! res.redirect("/auth/login") pruebas para sessions
             console.log("user created", user)
         })
@@ -64,11 +64,10 @@ exports.viewLogin =(req,res,next) => {
 
 exports.login = (req,res,next) => {
     //1.- Obtenemos los datos del formulario
-    const {username,email,password} = req.body
+    const { email, password, role} = req.body
 
-    console.log("EN EL LOGIN",req.body)
-    console.log('SESSION =====> ', req.session);
-    
+   
+   
     //==============> VALIDACIONES
 
 
@@ -93,17 +92,19 @@ exports.login = (req,res,next) => {
 	// 	return
 	// }
 
-
-    const {id} = req.params
+    
+    
+    const user = req.body
     User.findOne({email})
-    .then(user => {
-
-        console.log("EL USUARIOOOOOOOOOOOOO",user)// si no se encuentra user es valor es igual a "null"
-        
-        req.session.currentUser= user
-        console.log("SESSION =====> ", req.session);
-        //5. Redireccionamos a MI PERFIL
-            res.redirect(`user/profile/${user.id}`)
+    .then(user=> {
+        if(!user){
+            res.render('auth/login')
+            console.log("this is THE RQ:BODYYYYYYYYYYY", req.body)
+            return
+        }else if(bcryptjs.compareSync(password,user.password)){
+            req.session.currentUser = user
+            res.redirect(`/profile/${user.id}`);
+        }
     })
     .catch(error => {
         console.log("error in post de login", error)
