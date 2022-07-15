@@ -5,5 +5,6 @@ module.exports = (req, res, next) => {
     return res.redirect("/auth/login");
   
   }
+  req.session.currentUser = user;
   next();
 };

@@ -14,7 +14,7 @@
       <li>{{partner.address}}</li>
     </ul>
 
-    <a href="/product/create">Agregar Servicios</a>
+    <a href="/product/create/{{partner._id}}">Agregar Servicios</a>
   <a href="/partner/editPartner/{{partner._id}}">Editar Perfil</a>
   <button>
     <a href="/partner/dashboard/">Ir al Dashboard</a>
@@ -22,11 +22,23 @@
   </div>
   
 </div>
-<div class="listContainer">
+<div class="productsContainer">
 <ul>
   {{#each product}}
-  <li>hola mundo</li>
-    <a href="/product/{{_id}}">{{name}}</a>
+  <li>
+
+        {{name}}
+    <div class="card productCard" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.service_type}}</p>
+        <a href="/product/edit/{{product._id}}" class="btn btn-primary">Editar</a>
+        <a href="/product/delete/{{product._id}}" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  </li>
   {{/each}}
 </ul>  
 
@@ -40,3 +52,19 @@
 
 
 </div>
+{{#each product}}
+  <li>
+
+        {{name}}
+    <div class="card productCard" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.service_type}}</p>
+        <a href="/product/edit/{{product._id}}" class="btn btn-primary">Editar</a>
+        <a href="/product/delete/{{product._id}}" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  </li>
+  {{/each}}
