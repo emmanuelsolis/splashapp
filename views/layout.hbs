@@ -18,10 +18,10 @@
 
  {{!-- todo NAVBAR --}}
 
- {{#if userConnected}}
- <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
+ {{#if user}}
+ <nav class="navbar yesUser navbar-expand-lg">
 
-  <div class="container-fluid">
+    <div class="container-fluid">
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="logoImage">
@@ -30,9 +30,6 @@
       
       <div class="menu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        {{!-- <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li> --}}
         <li class="nav-item">
           <a class="nav-link" href="#">Quienes somos</a>
         </li>
@@ -46,20 +43,20 @@
       </div>
       
       </ul>
-      <div class="buttons">
-       {{!-- <a href="/auth/signup"><button type="button" class="btn">Registrarme</button></a> --}}
+      <div class="buttonsUser">
        <a href="/auth/login"><button type="button" class="btn">Mi Cuenta</button></a>
        <form action="" method="post"><a href="/auth/logout"><button type="button" class="btn">Salir</button></a></form>
       </div>
     </div>
-  </div>
-</nav>
+    </div>
+  </nav>
   
 
   {{else}}
-  <nav class="navbar navbar-expand-lg" style="background-color: #ffffff">
 
-  <div class="container-fluid">
+  <nav class="navbar notUser navbar-expand-lg" style="background-color: #ffffff">
+
+    <div class="container-fluid">
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="logoImage">
@@ -69,13 +66,13 @@
       <div class="menu">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Quienes somos</a>
+          <a class="nav-link" href="aboutUs">Quienes somos?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
+          <a class="nav-link" href="/contactUs">Contacto</a>
         </li>
 
         <li class="nav-item">
@@ -84,14 +81,14 @@
       </div>
       
       </ul>
-      <div class="buttons">
+      <div class="buttonsNoUser">
        <a href="/auth/signup"><button type="button" class="btn">Registrarme</button></a>
        <a href="/auth/login"><button type="button" class="btn">Mi Cuenta</button></a>
-       <form action="" method="post"><a href="/"><button type="button" class="btn">Salir</button></a></form>
+       <form action="/auth/logout" method="post"><a href="/"><button type="button" class="btn">Salir</button></a></form>
       </div>
     </div>
   </div>
-</nav>
+  </nav>
 {{/if}}
 
   {{!-- todo NAVBAR END --}}

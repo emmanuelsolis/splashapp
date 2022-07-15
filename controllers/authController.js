@@ -1,7 +1,9 @@
 //todo -------------- IMPORTACIONES --------------
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User.model")
+
 const bodyParser = require("body-parser")
+
 // renderiza form de sign up
 exports.viewSignup = (req,res,next) => {
     res.render("auth/signup")
@@ -9,12 +11,16 @@ exports.viewSignup = (req,res,next) => {
 
 exports.signup = (req,res,next) => {
 
+    
+
+
     //1.- Obtenemos los datos del formulario
 
-    const {role, user_photo, username, email, description, password, phone_number} = req.body
+    const {role,profile_pic, username, email, description, password, phone_number} = req.body
 
-    console.log("DATOS DEL USUARIO",{ user_photo, username, email, description, password, phone_number})
+    console.log("DATOS DEL USUARIO",{profile_pic,username, email, description, password, phone_number})
 
+    
 
     // //==============> VALIDACIONES
     // //  A) Campos vacios
@@ -41,9 +47,10 @@ exports.signup = (req,res,next) => {
     const salt = bcryptjs.genSaltSync(10);
     const newPassword = bcryptjs.hashSync(password, salt);
 
-    User.create({user_photo, username, description, phone_number, email, password: newPassword})
+    User.create({profile_pic, username, description, phone_number, email, password: newPassword})
         .then(user => {
             req.session.currentUser = user
+
             res.redirect(`/profile/${user.id}`)
             //! res.redirect("/auth/login") pruebas para sessions
             console.log("user created", user)
@@ -64,7 +71,9 @@ exports.viewLogin =(req,res,next) => {
 
 exports.login = (req,res,next) => {
     //1.- Obtenemos los datos del formulario
+
     const { email, password, role} = req.body
+
 
    
    
@@ -92,9 +101,8 @@ exports.login = (req,res,next) => {
 	// 	return
 	// }
 
-    
-    
     const user = req.body
+
     User.findOne({email})
     .then(user=> {
         if(!user){

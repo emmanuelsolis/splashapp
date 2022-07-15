@@ -1,16 +1,19 @@
 <h1>Editar usuario</h1>
 
-<form class="register-form" action="/edit/{{_id}}" method="post">
+
+{{!-- <form class="register-form" action="/edit/{{_id}}" method="post">
       {{!-- <label for="">Foto</label>
       <input type="text" name="user_photo" value="{{user.user_photo}}"> --}}
+      {{!-- <label for="">FOTO</label>
+      <input type="file" name="profile_pic" value="{{profile_pic}}"/>
       <label for="">Nombre</label>
       <input type="text" name="username" value="{{username}}"/>
-      {{!-- <label for="">Email</label>
+      <label for="">Email</label>
       <input type="text" name="email" value="{{user.email}}"/>
       <label for="">Telefono</label>
       <input type="number" name="phone_number" value="{{user.phone_number}}"/>
       <label for="">Dirección</label>
-      <input type="text" name="address" value="{{user.address}}"/> --}}
+      <input type="text" name="address" value="{{user.address}}"/>
       <button>Envíar</button>
     </form>
     
@@ -19,7 +22,34 @@
  {{errorMessage}} 
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+{{/if}} --}} 
+
+
+
+<div class="loginContainer">
+  {{!-- http://localhost:3000/auth/signup --}}
+<form action="/edit/{{_id}}" method="POST">
+
+<div class="edit-page">
+  <div class="form">
+    <form class="register-form">
+      <label for="">FOTO</label>
+      <input type="text" name="profile_pic" value="{{profile_pic}}"/>
+      <label for="">Nombre</label>
+      <input type="text" name="username" value="{{username}}"/>
+      <label for="">Telefono</label>
+      <input type="number" name="phone_number" value="{{user.phone_number}}"/>
+      <label for="">Dirección</label>
+      <input type="text" name="address" value="{{user.address}}"/>
+      <button>Editar</button>
+      <p class="message"> No estás registrado? <a href="/auth/signup">Registrarme</a></p>
+    </form>
+    {{#if errorMessage}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{errorMessage}} 
+
+</div>
 {{/if}}
-
-
-
+    
+  </div>
+</div>
