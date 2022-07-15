@@ -1,12 +1,30 @@
 
-<h1>MI PERFIL</h1>
 
-<div class="container">
-  <section class="mx-auto my-5" style="max-width: 23rem;">
+
+<div class="containerProfile">
+
+  <figure class="snip1515">
+  <div class="profile-image"><img src="{{user.profile_pic}}" alt="sample83" /></div>
+  <figcaption>
+    <h3>{{user.username}}</h3>
+    <h4>{{user.email}}</h4>
+    <p>{{user.address}}</p>
+    
+
+    <a class="editPorifle" href="/edit/{{user._id}}">Editar Perfil</a>
+    <a class="editPorifle" href="/partner/dashboard/">Ir al Dashboard</a>
+  </button>
+    </div>
+  </figcaption>
+</figure>
+
+  {{!-- <section class="mx-auto my-5" style="max-width: 23rem;">
     <div class="card testimonial-card mt-2 mb-3">
       <div class="card-up aqua-gradient"></div>
       <div class="avatar mx-auto white">
+
         <img src="{{user.user_photo}}" class="rounded-circle img-fluid"
+
           alt="woman avatar">
       </div>
       <div class="card-body text-center">
@@ -14,13 +32,16 @@
         <hr>
         <p>{{user.email}}</p> 
         <p> {{user.address}}</p>
+
       </div>
     </div>
 
   <a href="/edit/{{user._id}}">Editar Perfil</a>
-  <button>
-    <a href="/partner/dashboard/">Ir al Dashboard</a>
-  </button>
+  <a href="/partner/dashboard/">Ir al Dashboard</a>
+
     
-  </section>
+  </section> --}}
+
 </div> 
+
+

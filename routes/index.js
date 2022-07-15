@@ -9,6 +9,10 @@ const indexControllers = require("./../controllers/indexController")
 // http://localhost:3000/
 router.get("/",indexControllers.home)
 
+router.get("/contactUs",indexControllers.contactUs)
+
+router.get("/AboutUs",indexControllers.aboutUs)
+
 
 
 module.exports = router;

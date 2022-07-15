@@ -145,9 +145,11 @@ exports.viewEditProfile = (req,res,next) => {
     const {id} = req.params
     Partner.findById(id)
     .then(partner => {
-    //     // {partner: restPartner}
+
+    // {partner: restPartner}
     console.log("Estoy en editar perfil")
         res.render("partner/editPartner", partner)
+
     })
     .catch(err => {
         console.log("error en mostrar el edit-profile", err);

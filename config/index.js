@@ -59,7 +59,7 @@ module.exports = (app) => {
       saveUninitialized: false,
       cookie: { //Archivo con datos del usuario
 			httpOnly: true, // Fevita ataques XSS
-      sameSite:process.env.NODE_ENV === "production" ? "none" : "lax"
+      sameSite:process.env.NODE_ENV === "production" ? "none" : "lax",
 		},
       store: MongoStore.create({
         mongoUrl: MONGO_URI,

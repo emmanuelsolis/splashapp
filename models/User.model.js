@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 
 //todo -------------- MODELO DE USUARIO --------------
 const userSchema = new Schema({
-    user_photo:{
+    profile_pic:{
         type: String,
         default: "https://w0.peakpx.com/wallpaper/753/644/HD-wallpaper-perfil-cool-tecnologia-thumbnail.jpg" 
     },

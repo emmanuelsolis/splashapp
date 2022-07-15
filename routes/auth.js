@@ -3,6 +3,7 @@
 //todo -------------- IMPORTACIONES --------------
 // Para manejar las rutas necesitamos importar Express.
 const router = require("express").Router();
+const fileUploader = require("./../config/cloudinary.config")
 
 // Importamos los "Controlles" los cuales contienen toda la funcionalidad de la ruta.
 const authController = require("./../controllers/authController")
@@ -18,14 +19,9 @@ const isLoggedIn = require("./../middleware/isLoggedIn");
 //mostramos formulario
 // http://localhost:3000/auth/signup
 router.get("/signup",isLoggedOut,authController.viewSignup)
-
-
-
 // manejo de formulario
 // recibe de: http://localhost:3000/auth/signup -------> GET/POST LIGIN
-router.post("/signup",isLoggedOut,authController.signup)
-
-
+router.post("/signup",fileUploader.single("profile_pic"),isLoggedOut,authController.signup)
 
 
 //todo ----------------- INICIAR SESION -----------------
@@ -45,13 +41,14 @@ router.get("/profile/:id",isLoggedIn,authController.viewProfile)
 
 
 //todo ----------------- CERRAR SESION -----------------
+
 // router.get("/logout", (req, res, next) => {
 //     res.redirect()
 // })
 
-router.post("/logout",authController.logout, (req, res, next) => {
-    console.log("ESTOY EN EL POST DE LOGOUT")
-})
+
+router.post("/logout",authController.logout)
+
 module.exports = router
 
 
