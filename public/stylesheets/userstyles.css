@@ -1,4 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Open+sans);
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+
+*{
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+
 /* todo ----------------- NAVBAR ----------------- */
+
+/* ----------- nav bar USER --------------- */
+a{
+  color: #11d1d1;
+}
+
+a:checked{
+  color: #474b4b;
+}
+nav.yesUser{
+  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 85vw;
+  height: 10vh;
+}
+
+img.logo{
+  width: 60px;
+  height:50px;
+  border-radius: 50%;
+}
+
+.container-fluid{
+  margin-top: 50px;
+}
+
+div.collapse{
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  margin-bottom: 50px;
+  
+}
+
+.buttonsNoUser{
+  display: flex;
+  justify-content: center;
+  width: 210px;
+  margin: 10px;
+}
+a {
+
+  background-color: white;
+  margin-left: 10px;
+  color: #fff;
+}
+a:checked{
+  color: #333;
+}
+button.btn{
+  background-color: white;
+}
+button.btn:hover{
+  color: white;
+  background-color: #0de0d4;
+  /* border: 3px solid #0de0d4; */
+}
+
 
 
 
@@ -127,4 +199,128 @@ body {
   overflow: hidden;
   border: 5px solid #fff;
   border-radius: 50%;
+}
+
+
+
+
+
+div.containerProfile{
+  border: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+  width: 400px;
+  height: 400px;
+}
+
+
+
+
+figcaption{
+  background: linear-gradient(40deg, #2096ff, #05ffa3)
+}
+.snip1515 {
+  font-family: 'Open Sans', Arial, sans-serif;
+  position: relative;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #000000;
+  text-align: center;
+  line-height: 1.4em;
+  font-size: 14px;
+  box-shadow: none !important;
+ 
+}
+
+.snip1515 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.snip1515 .profile-image {
+  display: inline-block;
+  width: 80%;
+  z-index: 1;
+  position: relative;
+  padding: 10px;
+  border: 2px solid #2070b3;
+}
+
+.snip1515 .profile-image img {
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.snip1515 figcaption {
+  width: 100%;
+  background-color: #F2F2F2;
+  color: #555;
+  padding: 125px 25px 25px;
+  margin-top: -100px;
+  display: inline-block;
+}
+
+.snip1515 h3,
+.snip1515 h4,
+.snip1515 p {
+  margin: 0 0 5px;
+}
+
+.snip1515 h3 {
+  font-weight: 900;
+  font-size: 3.6em;
+  font-family: 'Playfair Display', Arial, sans-serif;
+}
+
+.snip1515 h4 {
+  color: #fcfcfc;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.snip1515 p {
+  color: white;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.snip1515 .icons {
+  text-align: center;
+  width: 100%;
+}
+
+.snip1515 i {
+  padding: 10px 2px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  color: #e8b563;
+  opacity: 0.75;
+}
+
+.snip1515 i:hover {
+  opacity: 1;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+
+a.editPorifle{
+  margin-top: 10px;
+  color: white;
+}
+
+
+/* todo ----------------- EDIT PROFILE ----------------- */
+
+div.loginContainer {
+  height: 100%;
+}
+
+div.edit-page{
+  margin-top: 20%;
 }

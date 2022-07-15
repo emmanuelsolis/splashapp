@@ -1,7 +1,8 @@
 //todo -------------- IMPORTACIONES --------------
 const bcryptjs = require("bcryptjs")
 const User = require("./../models/User.model")
-const fileUploader = require("./../config/cloudinary.config")
+
+const bodyParser = require("body-parser")
 
 // renderiza form de sign up
 exports.viewSignup = (req,res,next) => {
@@ -50,13 +51,9 @@ exports.signup = (req,res,next) => {
         .then(user => {
             req.session.currentUser = user
 
-            console.log("EL USUARIO CREADOOO",user)
-            res.redirect(`user/profile/${user.id}`)
-           
-          
-            // res.redirect(`user/profile/${user.id}`)
-            // //! res.redirect("/auth/login") pruebas para sessions
-            // console.log("user created", user)
+            res.redirect(`/profile/${user.id}`)
+            //! res.redirect("/auth/login") pruebas para sessions
+            console.log("user created", user)
         })
         .catch(err => next(err))
     .catch(error => {
@@ -74,11 +71,12 @@ exports.viewLogin =(req,res,next) => {
 
 exports.login = (req,res,next) => {
     //1.- Obtenemos los datos del formulario
-    const {email,password} = req.body
 
-    console.log("EN EL LOGIN",req.body)
-    console.log('SESSION =====> ', req.session);
-    
+    const { email, password, role} = req.body
+
+
+   
+   
     //==============> VALIDACIONES
 
 
@@ -103,15 +101,18 @@ exports.login = (req,res,next) => {
 	// 	return
 	// }
 
-    User.findOne({email})
-    .then(user => {
+    const user = req.body
 
-        console.log("EL USUARIOOOOOOOOOOOOO",user)// si no se encuentra user es valor es igual a "null"
-        
-        req.session.currentUser= user
-        console.log("SESSION =====> ", req.session);
-        //5. Redireccionamos a MI PERFIL
-            res.redirect(`user/profile/${user.id}`)
+    User.findOne({email})
+    .then(user=> {
+        if(!user){
+            res.render('auth/login')
+            console.log("this is THE RQ:BODYYYYYYYYYYY", req.body)
+            return
+        }else if(bcryptjs.compareSync(password,user.password)){
+            req.session.currentUser = user
+            res.redirect(`/profile/${user.id}`);
+        }
     })
     .catch(error => {
         console.log("error in post de login", error)

@@ -12,12 +12,13 @@ router.post("/create",(req,res,next)=>{
     
    
     Product.create({...restProduct})
+    
         .then(product => {
             
-            // const productList = []
+            const productList = {}
             // productList.push(product.toObject())
              //!Checar aqui si se puede hacer asi o si se debe hacer otra forma
-            res.render("partner/dashboard", {product})
+            res.redirect(`partner/profile/{{id}}`)
             console.log("product created", product);
         })
         .catch(err => next(err))

@@ -27,20 +27,21 @@ router.post("/signup",fileUploader.single("profile_pic"),isLoggedOut,authControl
 //todo ----------------- INICIAR SESION -----------------
 //mostramos formulario
 // http://localhost:3000/auth/signup
-router.get("/login",isLoggedOut,authController.viewLogin)
+router.get("/login",authController.viewLogin)
 // manejo de formulario
-router.post("/login",isLoggedOut,authController.login)
+router.post("/login",authController.login)
 
 
-//todo ----------------- PERFIL DE USUARIO -----------------
-router.get("/user/profile/:id",isLoggedIn,authController.viewProfile)
+// //todo ----------------- PERFIL DE USUARIO -----------------
+// router.get("/user/profile/:id",isLoggedIn,authController.viewProfile)
+router.get("/profile/:id",isLoggedIn,authController.viewProfile)
 
 
 
 
 
 //todo ----------------- CERRAR SESION -----------------
-router.get("/logout",isLoggedOut,authController.logout)
+router.post("/logout",authController.logout)
 
 
 module.exports = router
