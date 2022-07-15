@@ -45,9 +45,13 @@ router.get("/profile/:id",isLoggedIn,authController.viewProfile)
 
 
 //todo ----------------- CERRAR SESION -----------------
-router.get("/logout",isLoggedOut,authController.logout)
+// router.get("/logout", (req, res, next) => {
+//     res.redirect()
+// })
 
-
+router.post("/logout",authController.logout, (req, res, next) => {
+    console.log("ESTOY EN EL POST DE LOGOUT")
+})
 module.exports = router
 
 

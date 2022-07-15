@@ -1,8 +1,12 @@
 <h1>Precios y Servicios</h1>
 
+  
+    <h1>
+    {{partner.name}}
 
-    
+    </h1>
         <table class="table table-success table-striped">
+<button><a href="/product/create/{{partner._id}}">Agregar mas Servicios</a></button>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -11,15 +15,21 @@
                     <th>Precio</th>
                 </tr>
             </thead>
-    {{#each  partner._product}}
+    {{#each  partner._product }}
+ 
+      {{partner.name}}
+
+    </h1>
+
             <tbody>
                 <tr>
-                    <td>{{product.name}}</td>
-                    <td>{{product.description}}</td>
-                    <td>{{product.service_type}}</td>
-                    <td>{{product.price}}</td>
+                    <td>{{name}}</td>
+                    <td>{{description}}</td>
+                    <td>{{service_type}}</td>
+                    <td>{{price}}</td>
                 </tr>
             </tbody>
     {{/each}}
         </table>
    
+<button><a href="/partner/profile/{{partner._id}}">Volver a mi Perfil</a></button>

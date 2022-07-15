@@ -6,9 +6,11 @@ const IsLoggedOut = require("./../middlewares-partner/isLoggedOut");
 // TODO --------------------CREATE--------------------
 router.get("/create/:id",(req,res,next)=>{
     const {id} = req.params;
-    res.render("product/create-product")
+    res.render("product/create-product", {id})
+    console.log("REQ SESSION", req.session)
 })
-router.post("/create",IsLoggedIn, (req,res,next)=>{
+router.post("/create/:id",IsLoggedIn, (req,res,next)=>{
+    
     console.log("Estoy en el create POST")
     const {id} = req.params;
     const {name, description, service_type, price} = req.body
@@ -17,11 +19,14 @@ router.post("/create",IsLoggedIn, (req,res,next)=>{
         const {id} = req.params;
         console.log("ID",id)
         console.log("PRODUCT",product)
-        Partner.findByIdAndUpdate(id, {$push: {products: product}}, {new: true})
+        Partner.findByIdAndUpdate(id, {$push: {_product: product}}, {new: true})
         .then(partner => {
+            req.session.currentPartner = partner
+            console.log("product created", product);
+            console.log("PARTNER", partner);
+            console.log("REQQQQQQQQ", req.session.currentPartner);
             
         res.redirect(`/product/products/${partner.id}`)
-        console.log("product created", product);
         })  
         .catch(err => {
         console.log("error in creating product", err);
