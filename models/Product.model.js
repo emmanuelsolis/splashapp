@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 // TODO: Clase para los servicios ofrecidos
-const serviceSchema = new Schema({
+const productSchema = new Schema({
   service_photo:{
         type: String,
         require:true,
@@ -38,16 +38,9 @@ _partner_services: [{type:Schema.Types.ObjectId, ref:'Partner'}],// products ofr
 
 });
 
-const Service = model("Service", serviceSchema);
+const Product = model("Product", productSchema);
 
-module.exports = Service;
+module.exports = Product;
 
 
 
-product:[{
-    img:String, 
-    title:String,
-    title2:String,
-    price:Number,
-    description:String,
-}]

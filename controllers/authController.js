@@ -140,7 +140,7 @@ exports.viewProfile = (req,res) => {
 
 
 exports.logout = (req,res,next) => {
-    //! NO BORRA SESION DE MONGO
+  console.log("llegue alLOGOUT");
     req.session.destroy((error)=>{
         if(error){
             console.log(error)

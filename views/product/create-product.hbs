@@ -1,21 +1,23 @@
 <h1>Ingresa un servicio</h1>
 
-<form action="/product/create/{{product._id}}" method="post">
-
-    <label for="photo">Ingresa tu  fotografia</label>
-    <input type="text" name="photo"><br>
+<form action="/product/create/{{id}}" method="POST">
+<p>{{id}}</p>
+   
     <label for="name">Ingresa el nombre del servicio</label>
     <input type="text" name="name"></input><br>
     <label for="description">Ingresa la descripción del servicio</label>
     <input type="text" name="description"></input><br>
-    <label for="service_type">Lavanderia</label>
-    <select name="service_type">
-        <option value="Lavanderia">Lavanderia</option>
-        <option value="Tintoreria">Tintoreria</option>
-        <option value="Planchaduria">Planchaduria</option>
-    </select>
+
+    <label for="service_type">Tipo de Servicio
+      <select name="service_type" id="type">
+         <option value="Lavanderia">Lavanderia</option>
+         <option value="Tintoreria">Tintoreria</option>
+         <option value="Planchaduria">Planchaduria</option>
+      </select>
+   </label>
+
     <label for="price">Ingresa el precio del servicio</label>
-    <input type="number" name="price"></input><br>
+    <input type="number" name="price" value="price"></input><br>
 
     <button type="submit">Agregar servicio</button>
 

@@ -5,5 +5,7 @@ module.exports = (req, res, next) => {
     return res.redirect("/partner/login");
   
   }
+  // req.session.currentPartner = partner;
+  req.partner = req.session.currentPartner;
   next();
 };

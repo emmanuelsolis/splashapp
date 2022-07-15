@@ -74,21 +74,44 @@ exports.login = (req,res,next) => {
 }
 //TODO----------Rednderiza partner profile
 exports.viewProfile = (req,res,next) => {
-    const {id} = req.params;
+//!este es el de prueba
+    const {id} = req.params
+    const {partner} = req.session
+    console.log("Estoy en profile del Partner")
     const {role, ...restPartner } = req.body;
     Partner.findById(id)
+    .populate("_product _user_order")
     .then(partner => {
-        res.render("partner/profile", {partner: req.session.currentPartner})
-        // res.render("partner/profile", user)
-    }).catch(error=>{
-        next(error)
+        Product.find()
+        .then(product => {
+            let products = {}
+            res.render("partner/profile", {products:product, partner:req.session.currentPartner})
+            console.log("Lista de Productos", products)
+            // res.render("partner/profile", {partner: req.session.currentPartner}) */
+            })
+        })
+    .catch(err => {
+        console.log("error in post/dashboard", err);
+        next()
     })
+
+//     //!el de abajo si sirve
+//     const {id} = req.params;
+//     const {role, ...restPartner } = req.body;
+//     Partner.findById(id)
+//     .then(partner => {
+//         res.render("partner/profile", {partner: req.session.currentPartner})
+//     })
+//     .catch(error=>{
+//         next(error)
+//     })
 }
 
 //TODO -------Busqueda de cada partner para renderizar en la lista
 exports.viewDashboard = (req,res,next) => {
     const { id } = req.params;
     const { role, ...Product } = req.body
+
     Partner.find()
     .then(partners => {
         // .populate("_product _user_order")
