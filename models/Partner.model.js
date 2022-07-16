@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const partnerSchema = new Schema({
-  partner_photo:{
+  profile_pic:{
     type: String,
     require:true,
     default:"https://cdn.worldvectorlogo.com/logos/splash-2.svg"
