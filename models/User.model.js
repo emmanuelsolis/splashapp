@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs")
 const userSchema = new Schema({
     profile_pic:{
         type: String,
-        default: "https://w0.peakpx.com/wallpaper/753/644/HD-wallpaper-perfil-cool-tecnologia-thumbnail.jpg" 
+        default: "https://st4.depositphotos.com/21771878/23769/v/600/depositphotos_237690414-stock-illustration-water-splash-banner-logo-watercolor.jpg" 
     },
     username:{
         type: String, 

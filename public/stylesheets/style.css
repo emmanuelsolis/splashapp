@@ -322,3 +322,56 @@ img.banner{
 
 
 
+/* ----------- Contact --------------- */
+
+h1.contact{
+  text-align: center;
+}
+
+div.containerContact{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.leftContact{
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+ 
+}
+
+.middleContact{
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+}
+
+.rightContact{
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+}
+
+
+svg{
+  margin: 20px;
+  width: 90px;
+  height: 90px;
+}
+
+.leftContact{
+  display: flex;
+
+}
+
+.middleContact{
+  display: flex;
+
+}
+
+.rightContact{
+  display: flex;
+
+}

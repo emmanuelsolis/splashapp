@@ -8,7 +8,39 @@
 <h1>List of Partners</h1>
     <div id="cards" class="col-12">
         {{#each hbPartList}}
-            <div class="card text-center m-5 col-12" style="width: 25%;">
+
+
+
+<div class="blog-card alt">
+    <div class="meta">
+      <div class="photo" style="background-image: url({{partner_photo}})"></div>
+      <ul class="details">
+        <li class="author"><a href="#">correo: {{email}}</a></li>
+        <li class="date"> teléfono:  {{phone_number}}</li>
+        <li class="tags">
+          <ul>
+            <li><a href="#">Horario de Servicio:{{open_hours}}</a></li>
+          
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="description">
+      <h1>{{name}}</h1>
+      <h2>{{address}}</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+      <p class="read-more">
+        <a href="/product/products/{{this._id}}">Conoce mis servicios</a>
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+
+            {{!-- <div class="card text-center m-5 col-12" style="width: 25%;">
 
             <img class="card-img-top" src="{{partner_photo}}" alt="Kitty" />
             <div class="card-body">
@@ -25,11 +57,11 @@
 
                 {{/if}} --}}
 
-              </ul>
+              {{!-- </ul>
               <a href="/product/products/{{this._id}}" class="btn btn-danger">Conoce mis Servicios</a>
-            </div>
+            </div> --}}
 
-          </div>
+          </div> 
         {{/each}}
 
     </div>
@@ -38,6 +70,23 @@
 
 
 </div>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 

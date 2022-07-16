@@ -1,7 +1,35 @@
 
-<div class="containerProfile">
 
-<div class="card partnerCard" style="width: 18rem;">
+
+
+<div class="containerProfilePartner">
+
+  <figure class="snip1515">
+  <div class="profile-image"><img src="{{partner.partner_photo}}" alt="sample83" /></div>
+  <figcaption>
+    <h2>{{partner.name}}</h2>
+    <h5>{{partner.email}}</h5>
+    <p>{{partner.address}}</p>
+    <p>{{partner.open_hours}}</p>
+    <p>{{partner.phone_number}}</p>
+
+    
+
+    <a class="editPorifle" href="/product/create/{{partner._id}}">Agregar Servicios</a>
+  <a class="editPorifle" href="/partner/editPartner/{{partner._id}}">Editar Perfil</a> <br>
+  <a class="editPorifle" href="/partner/dashboard/">Ir al Dashboard</a>
+  </button>
+    </div>
+  </figcaption>
+</figure>
+
+</div> 
+
+
+
+
+
+{{!-- <div class="card partnerCard" style="width: 18rem;">
   <div class="partimg">
     <img src="{{partner.partner_photo}}" class="card-img-top" alt="...">
   </div>
@@ -21,7 +49,16 @@
   </button>
   </div>
   
-</div>
+</div> --}}
+
+
+
+
+
+
+
+
+
 <div class="productsContainer">
 <ul>
   {{#each product}}
@@ -45,6 +82,9 @@
 
 
 </div>
+
+
+
 
 
 
