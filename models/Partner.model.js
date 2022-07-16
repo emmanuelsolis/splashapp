@@ -5,7 +5,7 @@ const partnerSchema = new Schema({
   profile_pic:{
     type: String,
     require:true,
-    default:"https://w0.peakpx.com/wallpaper/753/644/HD-wallpaper-perfil-cool-tecnologia-thumbnail.jpg"
+    default:"https://cdn.worldvectorlogo.com/logos/splash-2.svg"
 
   },
 

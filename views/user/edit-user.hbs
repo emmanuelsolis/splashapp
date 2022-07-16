@@ -33,6 +33,7 @@
 <div class="edit-page">
   <div class="form">
     <form class="register-form">
+
       <label for="">FOTO</label>
       <input type="file" name="profile_pic" value="{{user.profile_pic}}"/>
       <label for="">Nombre</label>
@@ -42,7 +43,6 @@
       <label for="">Dirección</label>
       <input type="text" name="address" value="{{user.address}}"/>
       <button>Editar</button>
-      <p class="message"> No estás registrado? <a href="/auth/signup">Registrarme</a></p>
     </form>
 {{!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
     {{#if errorMessage}}

@@ -15,16 +15,10 @@ const productSchema = new Schema({
      },
    description: String,
    service_pack: {
-        type: [{
-            size:{
-                type: String,
-                enum:["3kg","5kg","7kg","10kg"],
-            },
-            price:{
-                type: Number,
-                min:200
-            }
-        }]
+        enum:["3kg","5kg","7kg","10kg"],
+        type: String,
+        default: "3kg"
+        
      },
 
 price: Number,
