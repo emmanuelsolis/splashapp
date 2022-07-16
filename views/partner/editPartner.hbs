@@ -1,5 +1,7 @@
 <h1>Actualizar datos</h1>
-<form action="/partner/editPartner/{{_id}}" method="post">
+<form action="/partner/editPartner/{{_id}}" method="post" enctype="multipart/form-data">
+    <label for="name">Foto</label>
+    <input type="file" name="profile_pic" value="{{partner.profile_pic}}"></input><br>
     <label for="name">Nombre de su negocio</label>
     <input type="text" name="name" value="{{partner.name}}"></input><br>
     <label for="email">Email</label>

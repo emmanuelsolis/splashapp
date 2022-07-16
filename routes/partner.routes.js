@@ -5,6 +5,7 @@ const partnersAuthController = require("./../controllers/partnersAuthController"
 const Product = require("../models/Product.model");
 const isLoggedOut = require("./../middlewares-partner/isLoggedOut");
 const isLoggedIn = require("./../middlewares-partner/isLoggedIn");
+const fileUploader = require("../config/cloudinary.config")
 /* 
 create
 signup : get, post{redirect}
@@ -16,7 +17,7 @@ signup : get, post{redirect}
 router.get("/signup",isLoggedOut, partnersAuthController.viewSignup)
 
 
-router.post("/signup",isLoggedOut, partnersAuthController.signup)
+router.post("/signup",isLoggedOut,fileUploader.single('profile_pic'), partnersAuthController.signup)
 
 
 // TODO --------------------LOGIN--------------------
@@ -28,7 +29,11 @@ router.post("/login", partnersAuthController.login)
 router.get("/profile/:id",isLoggedIn, partnersAuthController.viewProfile)
 
 
-// TODO --------------------READ--------------------
+
+// TODO --------------------EDIT--------------------
+router.get("/editPartner/:id", partnersAuthController.viewEditProfile)
+
+router.post("/editPartner/:id",fileUploader.single('profile_pic'), partnersAuthController.postEditProfile)
 
 
 
@@ -41,10 +46,6 @@ router.post("/dashboard", partnersAuthController.postDashboard)
 
 
 
-// TODO --------------------EDIT--------------------
-router.get("/editPartner/:id", partnersAuthController.viewEditProfile)
-
-router.post("/editPartner/:id", partnersAuthController.postEditProfile)
 
 
 // TODO --------------------DELETE--------------------
