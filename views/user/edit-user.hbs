@@ -28,15 +28,15 @@
 
 <div class="loginContainer">
   {{!-- http://localhost:3000/auth/signup --}}
-<form action="/edit/{{_id}}" method="POST">
+<form action="/edit/{{_id}}" method="POST" enctype="multipart/form-data">
 
 <div class="edit-page">
   <div class="form">
     <form class="register-form">
       <label for="">FOTO</label>
-      <input type="text" name="profile_pic" value="{{profile_pic}}"/>
+      <input type="file" name="profile_pic" value="{{user.profile_pic}}"/>
       <label for="">Nombre</label>
-      <input type="text" name="username" value="{{username}}"/>
+      <input type="text" name="username" value="{{user.username}}"/>
       <label for="">Telefono</label>
       <input type="number" name="phone_number" value="{{user.phone_number}}"/>
       <label for="">Dirección</label>
@@ -44,12 +44,13 @@
       <button>Editar</button>
       <p class="message"> No estás registrado? <a href="/auth/signup">Registrarme</a></p>
     </form>
+{{!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
     {{#if errorMessage}}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
     {{errorMessage}} 
 
 </div>
 {{/if}}
     
-  </div>
+  </div> --}}
+</div>
 </div>

@@ -3,7 +3,8 @@ const User = require("./../models/User.model")
 const Partner = require("./../models/Partner.model");
 const Product = require("./../models/Product.model");
 const bodyParser = require('body-parser')
-// const fileUploader = require('../config/cloudinary.config');
+
+const fileUploader = require('../config/cloudinary.config');
 // const {checkRole} = require("../middleware/customMiddleware")
 // const mongoose = require('mongoose');
 // const nodemailer = require("nodemailer")
@@ -13,12 +14,19 @@ exports.viewSignup = (req,res,next) => {
 }
 //TODO-------Post de formulario de signup te manda al profile
 exports.signup = (req,res,next) => {
+     //validation images
+     let profile_pic;
+     if(req.file){
+         profile_pic = req.file.path
+     }
     const {role, ...restPartner } = req.body;
     const salt = bcryptjs.genSaltSync(10);
     const newPassword = bcryptjs.hashSync(restPartner.password, salt);
 
-    Partner.create({...restPartner, password: newPassword})
+    Partner.create({...restPartner,profile_pic, password: newPassword})
         .then(partner => {
+            const {id} = req.params
+
             req.session.currentPartner = partner
             res.redirect(`/partner/profile/${partner._id}`)
             console.log("partner created", partner);
@@ -47,7 +55,7 @@ exports.login = (req,res,next) => {
 
 	Partner.findOne({email})
 	.then(partner => {
-
+        
 		// if(!user){
         //     const errorMessage = ["El correo o contraseña es incorrecto"]
         //     return res.render("auth/register",{errorMessage,isSignUp:true})
@@ -157,9 +165,14 @@ exports.viewEditProfile = (req,res,next) => {
     }   )   
 }
 exports.postEditProfile = (req,res,next) => {
+      //validation images
+      let profile_pic;
+      if(req.file){
+          profile_pic = req.file.path
+      }
     const {id} = req.params
     const {name, ...restPartner} = req.body
-    Partner.findByIdAndUpdate(id, {name, ...restPartner}, {new: true})
+    Partner.findByIdAndUpdate(id, {name,profile_pic, ...restPartner}, {new: true})
     .then(partnerEdited => {
         req.session.currentPartner = partnerEdited
         res.redirect(`/partner/profile/${id}`)

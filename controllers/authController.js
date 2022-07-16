@@ -10,13 +10,18 @@ exports.viewSignup = (req,res,next) => {
 }
 
 exports.signup = (req,res,next) => {
-
+    let profile_pic;
+     if(req.file){
+         profile_pic = req.file.path
+     }
+ 
+     console.log("req.file",req.file)
     
 
 
     //1.- Obtenemos los datos del formulario
 
-    const {role,profile_pic, username, email, description, password, phone_number} = req.body
+    const {role, username, email, description, password, phone_number} = req.body
 
     console.log("DATOS DEL USUARIO",{profile_pic,username, email, description, password, phone_number})
 
@@ -41,7 +46,8 @@ exports.signup = (req,res,next) => {
 
 	// 	return
 	// }
-
+     //validation images
+     
 
     //3.- Creamos usuario nuevo
     const salt = bcryptjs.genSaltSync(10);
