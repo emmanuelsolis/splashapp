@@ -1,0 +1,111 @@
+
+
+
+
+<div class="containerProfilePartner">
+
+  <figure class="snip1515">
+  <div class="profile-image"><img src="{{partner.profile_pic}}" alt="sample83" /></div>
+  <figcaption>
+    <h2>{{partner.name}}</h2>
+    <h5>{{partner.email}}</h5>
+    <p>{{partner.address}}</p>
+    <p>{{partner.open_hours}}</p>
+    <p>{{partner.phone_number}}</p>
+
+    
+
+    <a class="editPorifle" href="/product/create/{{partner._id}}">Agregar Servicios</a>
+  <a class="editPorifle" href="/partner/editPartner/{{partner._id}}">Editar Perfil</a> <br>
+  <a class="editPorifle" href="/partner/dashboard/">Ir al Dashboard</a>
+  </button>
+    </div>
+  </figcaption>
+</figure>
+
+</div> 
+
+
+
+
+
+{{!-- <div class="card partnerCard" style="width: 18rem;">
+  <div class="partimg">
+    <img src="{{partner.profile_pic}}" class="card-img-top" width="200px" height="auto"alt="...">
+  </div>
+
+  <div class="card-body ">
+    <p class="card-text">{{partner.email}}</p>
+    <ul>
+      
+      <li>{{partner.name}}</li>
+      <li>{{partner.phone_number}}</li>
+      <li>{{partner.address}}</li>
+    </ul>
+
+    <a href="/product/create/{{partner._id}}">Agregar Servicios</a>
+  <a href="/partner/editPartner/{{partner._id}}">Editar Perfil</a>
+  <button>
+    <a href="/partner/dashboard/">Ir al Dashboard</a>
+  </button>
+  </div>
+  
+</div> --}}
+
+
+
+
+
+
+
+
+
+<div class="productsContainer">
+<ul>
+  {{#each product}}
+  <li>
+
+        {{name}}
+    <div class="card productCard" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.service_type}}</p>
+        <a href="/product/edit/{{product._id}}" class="btn btn-primary">Editar</a>
+        <a href="/product/delete/{{product._id}}" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ul>  
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+{{#each product}}
+  <li>
+
+        {{name}}
+    <div class="card productCard" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.service_type}}</p>
+        <a href="/product/edit/{{product._id}}" class="btn btn-primary">Editar</a>
+        <a href="/product/delete/{{product._id}}" class="btn btn-danger">Eliminar</a>
+      </div>
+    </div>
+  </li>
+  {{/each}}
