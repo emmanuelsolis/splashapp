@@ -2,7 +2,7 @@
 
 
 
-<form action="/partner/editPartner/{{_id}}" method="post" enctype="multipart/form-data">
+{{!-- <form action="/partner/editPartner/{{_id}}" method="post" enctype="multipart/form-data">
     <label for="name">Foto</label>
     <input type="file" name="profile_pic" value="{{partner.profile_pic}}"></input><br>
     <label for="name">Nombre de su negocio</label>
@@ -15,18 +15,18 @@
     <input type="text" name="address" value="{{partner.address}}"></input><br>
     
     <button type="submit">Guardar cambios</button>
-</form> --}}
+</form> --}} 
 
 
 
 <div class="loginContainer">
-<form action="/partner/editPartner/{{_id}}" method="POST">
+<form action="/partner/editPartner/{{_id}}" method="POST" enctype="multipart/form-data">
 
 <div class="edit-page">
   <div class="form">
     <form class="register-form">
-      <label for="partner_photo">Foto</label>
-    <input type="text" name="partner_photo" value="{{partner.partner_photo}}"></input><br>
+      <label for="profile_pic">Foto</label>
+    <input type="file" name="profile_pic" value="{{partner.profile_pic}}"></input><br>
       <label for="name">Nombre de su negocio</label>
       <input type="text" name="name" value="{{partner.name}}"></input><br>
       <label for="email">Email</label>
@@ -35,7 +35,7 @@
       <input type="number" name="phone_number" value="{{partner.phone_number}}"></input><br>
       <label for="address">Dirección</label>
       <input type="text" name="address" value="{{partner.address}}"></input><br>
-      <label for="address">Horario</label>
-      <input type="text" name="address" value="{{partner.open_hours}}"></input><br>
+      <label for="open_hours">Horario</label>
+      <input type="text" name="open_hours" value="{{partner.open_hours}}"></input><br>
       <button>Editar</button>
     </form>
