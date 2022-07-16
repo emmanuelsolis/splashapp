@@ -21,7 +21,7 @@ const isLoggedIn = require("./../middleware/isLoggedIn");
 router.get("/signup",isLoggedOut,authController.viewSignup)
 // manejo de formulario
 // recibe de: http://localhost:3000/auth/signup -------> GET/POST LIGIN
-router.post("/signup",fileUploader.single("profile_pic"),isLoggedOut,authController.signup)
+router.post("/signup",fileUploader.single("profile_pic"),authController.signup)
 
 
 //todo ----------------- INICIAR SESION -----------------
